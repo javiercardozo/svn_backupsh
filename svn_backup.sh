@@ -56,12 +56,12 @@ for repo in *; do
             #Incremental
             REP_LAST_BK_REV=0
             #Ask if the file exist
-            if [ -e ${BACKUP_FOLDER_TO}/status/revisions/${repo}.rev ]; then
-                REP_LAST_BK_REV=`cat ${BACKUP_FOLDER_TO}/status/revisions/${repo}.rev`
+            if [ -e ${BACKUP_FOLDER_TO}status/revisions/${repo}.rev ]; then
+                REP_LAST_BK_REV=`cat ${BACKUP_FOLDER_TO}status/revisions/${repo}.rev`
             else
                 #If not exist
-                mkdir -p ${BACKUP_FOLDER_TO}/status/revisions/            #Build folder
-                touch ${BACKUP_FOLDER_TO}/status/revisions/${repo}.rev    #Build an empty file
+                mkdir -p ${BACKUP_FOLDER_TO}status/revisions/            #Build folder
+                touch ${BACKUP_FOLDER_TO}status/revisions/${repo}.rev    #Build an empty file
             fi
             echo "Backup incremental. Last backup revision: $REP_LAST_BK_REV. Current revision: $CURR_REV" >> ${LOG_FILE}
             if [ ${CURR_REV} -gt ${REP_LAST_BK_REV} ] ; then
@@ -74,7 +74,7 @@ for repo in *; do
 
         if [ $SUCCESS_DUMP -gt 0 ]; then
             echo "Dump succesful." >> ${LOG_FILE}
-            echo ${CURR_REV} > ${BACKUP_FOLDER_TO}/status/revisions/${repo}.rev
+            echo ${CURR_REV} > ${BACKUP_FOLDER_TO}status/revisions/${repo}.rev
             echo ""  >> ${LOG_FILE}
 
             echo "Starting file compression in: " ${BACKUP_FOLDER_TO}${NAME_ID}".tgz" >> ${LOG_FILE}
